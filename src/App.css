@@ -1,0 +1,11 @@
+.task-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    outline: 1px solid #6a6a6a;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 7px #a82121;
+}
