@@ -1,0 +1,62 @@
+.task-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: rgb(242, 246, 250);
+    padding: 20px 15px;
+    outline: 1px solid rgba(61, 61, 61, 0.157);
+    margin: 16px 10px;
+    border-radius: 4px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.task-item.completed {
+    background-color: aqua;
+    color: rgba(61, 61, 61, 0.157);
+    font: bold;
+}
+
+.task-item.completed .task {
+    font-weight: 600;
+}
+
+.task-item .button-delete {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 25px;
+    color: rgb(61, 61, 61);
+    padding: 1px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.task-item .button-delete:hover {
+    color: #fff;
+    background-color: rgba(234, 55, 55, 0.798);
+}
+
+.task-item .task {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 10px 0 25px;
+    word-break: break-all;
+}
+
+.task-item input {
+    min-width: 16px;
+    height: 16px;
+}
+
+.task-item input:checked {
+    accent-color: rgb(6, 160, 111)
+}
+
+.task-item input:checked~.task {
+    text-decoration: line-through;
+    color: rgb(61, 61, 61);
+}

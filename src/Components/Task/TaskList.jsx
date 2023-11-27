@@ -1,18 +1,23 @@
-import { useState } from "react";
-import { TaskItem } from "./Item/TaskItem";
+import { useEffect, useState } from "react";
+import TaskItem from "./Item/TaskItem";
 import TaskForm from "./Form/TaskForm";
+import { PendingTasks } from "./PendingTasks.jsx";
 import "./task.css";
 
 export const TaskList = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  const tasksPendientes = tasks.filter((task) => !task.isCompletada).length;
 
   const addTask = (todo) => {
-    //if (todo.trim() === "") {
-    //return; // No se permite agregar una tarea vacía
-    //}
-
     const task = {
-      id: tasks.length + 1,
+      id: Math.floor(Math.random() * 10000) + 1,
       nombre: todo,
       isCompletada: false,
     };
@@ -35,14 +40,17 @@ export const TaskList = () => {
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
-    console.log(tasks);
+  };
+
+  const deleteAllTasks = () => {
+    setTasks([]);
   };
 
   return (
-    <section className="task-list">
+    <section>
       <h2>Lista de tareas</h2>
       <TaskForm addTask={addTask} />
-      <ul>
+      <ul className="task-list">
         {tasks.map((task) => (
           <TaskItem
             key={task.id}
@@ -52,6 +60,8 @@ export const TaskList = () => {
           ></TaskItem>
         ))}
       </ul>
+
+      <PendingTasks pending={tasksPendientes} borrar={deleteAllTasks} />
     </section>
   );
 };

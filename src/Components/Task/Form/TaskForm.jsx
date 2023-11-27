@@ -1,15 +1,29 @@
+import "./taskForm.css";
+import { useState } from "react";
+
 const TaskForm = ({ addTask }) => {
-  //vamos a utilizar el hook useRef para obtener el valor del input
+  const [tasks, setTasks] = useState("");
+
+  const addTaskOnSubmit = (e) => {
+    e.preventDefault();
+    const name = tasks;
+    if (!name || name.trim() == "") {
+      alert("Ingrese una tarea");
+    } else {
+      addTask(name);
+      setTasks("");
+    }
+  };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        const name = e.target[0].value;
-        addTask(name);
-      }}
-    >
-      <input type="text" placeholder="ingrese una tarea" />
+    <form className="TaskForm" onSubmit={(e) => addTaskOnSubmit(e)}>
+      <input
+        type="text"
+        placeholder="ingrese una tarea"
+        value={tasks}
+        onChange={(e) => setTasks(e.target.value)}
+      />
+      <span className="add">+</span>
     </form>
   );
 };

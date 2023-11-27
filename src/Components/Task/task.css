@@ -1,0 +1,33 @@
+.task-list {
+    margin-top: 30px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.task-list {
+    color: #000;
+}
+
+.content-pending {
+    margin-top: 2rem;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.content-pending .pending {
+    font-weight: 600;
+    color: rgb(61, 61, 61);
+}
+
+.content-pending .clear {
+    padding: 8px 9px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: rgb(4, 112, 235);
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+}
