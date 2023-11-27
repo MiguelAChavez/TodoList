@@ -3,6 +3,7 @@ import TaskItem from "./Item/TaskItem";
 import TaskForm from "./Form/TaskForm";
 import { PendingTasks } from "./PendingTasks.jsx";
 import "./task.css";
+import { v4 as uuidv4 } from "uuid";
 
 export const TaskList = () => {
   const [tasks, setTasks] = useState(
@@ -17,7 +18,7 @@ export const TaskList = () => {
 
   const addTask = (todo) => {
     const task = {
-      id: Math.floor(Math.random() * 10000) + 1,
+      id: uuidv4(),
       nombre: todo,
       isCompletada: false,
     };
