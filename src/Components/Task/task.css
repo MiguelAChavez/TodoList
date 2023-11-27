@@ -8,6 +8,10 @@
     color: #000;
 }
 
+h2 {
+    font-size: 2rem;
+}
+
 .content-pending {
     margin-top: 2rem;
     display: flex;

@@ -12,7 +12,7 @@
 }
 
 .task-item.completed {
-    background-color: aqua;
+    background-color: rgba(0, 255, 153, 0.241);
     color: rgba(61, 61, 61, 0.157);
     font: bold;
 }

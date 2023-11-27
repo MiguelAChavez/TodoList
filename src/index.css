@@ -10,5 +10,5 @@
 }
 
 body {
-    background-image: linear-gradient(to right, #f3f3f3, #ffffff);
+    background-image: url("assets/fondo.jpg");
 }
