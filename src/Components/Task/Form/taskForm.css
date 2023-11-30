@@ -10,6 +10,7 @@
     margin-top: 1rem;
 }
 
+
 .TaskForm input {
     position: absolute;
     width: 100%;
@@ -30,12 +31,52 @@
     position: absolute;
     top: 50%;
     right: 15px;
+    border: none;
     transform: translateY(-50%);
     font-size: 30px;
     font-weight: 600;
     color: var(--color-primary);
+    cursor: pointer;
+}
+
+.TaskForm .add:hover {
+    color: var(--color-focus);
 }
 
 .TaskForm input:focus~.add {
     color: var(--color-focus);
+}
+
+.tooltip {
+    position: absolute;
+    top: -50%;
+    right: 3%;
+}
+
+tool-tip {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+    width: 150px;
+
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.444);
+    padding: .5rem 1rem;
+    font-size: .8rem;
+    border-radius: 8px;
+    background-color: #fff;
+
+    top: 5%;
+    left: 5%;
+
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+:has(> tool-tip) {
+    position: relative;
+}
+
+:has(> tool-tip):hover tool-tip {
+    opacity: 1;
 }

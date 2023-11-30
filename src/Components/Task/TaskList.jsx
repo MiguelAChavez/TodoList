@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import TaskItem from "./Item/TaskItem";
 import TaskForm from "./Form/TaskForm";
-import { PendingTasks } from "./PendingTasks.jsx";
-import "./task.css";
+import { PendingTasks } from "./PendingTasks";
 import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
+import "./task.css";
 
 export const TaskList = () => {
   const [tasks, setTasks] = useState(
@@ -22,7 +23,16 @@ export const TaskList = () => {
       nombre: todo,
       isCompletada: false,
     };
+
     setTasks([...tasks, task]);
+
+    toast.success("Tarea agregada", {
+      pauseOnHover: false,
+      autoClose: 500,
+      bodyStyle: {
+        fontSize: "18px",
+      },
+    });
   };
 
   const updateTaskEstado = (id) => {
@@ -41,10 +51,14 @@ export const TaskList = () => {
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
-  };
-
-  const deleteAllTasks = () => {
-    setTasks([]);
+    toast.error("Tarea eliminada", {
+      pauseOnHover: false,
+      autoClose: 500,
+      icon: false,
+      bodyStyle: {
+        fontSize: "18px",
+      },
+    });
   };
 
   return (
@@ -61,8 +75,7 @@ export const TaskList = () => {
           ></TaskItem>
         ))}
       </ul>
-
-      <PendingTasks pending={tasksPendientes} borrar={deleteAllTasks} />
+      <PendingTasks pending={tasksPendientes} borrar={() => setTasks([])} />
     </section>
   );
 };
